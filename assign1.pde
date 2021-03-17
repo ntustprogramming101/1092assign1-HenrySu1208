@@ -9,12 +9,12 @@ int groundHeight, grassHeight, soldierX, soldierY, soldierSpeed, robotX, robotY,
 
 void setup() {
   size(640, 480, P2D);  
-  bg = loadImage("bg.jpg");
-  soil = loadImage("soil.png");
-  groundhog = loadImage("groundhog.png");
-  life = loadImage("life.png");
-  soldier = loadImage("soldier.png");
-  robot = loadImage("robot.png");
+  bg = loadImage("img/bg.jpg");
+  soil = loadImage("img/soil.png");
+  groundhog = loadImage("img/groundhog.png");
+  life = loadImage("img/life.png");
+  soldier = loadImage("img/soldier.png");
+  robot = loadImage("img/robot.png");
 
   groundHeight = 80;
   grassHeight = 15;
