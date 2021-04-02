@@ -5,10 +5,10 @@ PImage life;
 PImage soldier;
 PImage robot;
 
-int groundHeight, grassHeight, soldierX, soldierY, soldierSpeed, robotX, robotY, robotSpeed, raserX;
+int groundHeight, grassHeight, soldierX, soldierY, soldierSpeed, robotX, robotY, robotSpeed, raserX, raserXleft, raserXright;
 
 void setup() {
-  size(640, 480, P2D);  
+  size(640, 480, P2D);
   bg = loadImage("img/bg.jpg");
   soil = loadImage("img/soil.png");
   groundhog = loadImage("img/groundhog.png");
@@ -28,7 +28,6 @@ void draw() {
   soldierSpeed = 2;
 
   background(0);
-
   //back
   image(bg, 0, 0);
   //sun location
@@ -43,25 +42,24 @@ void draw() {
   //ground
   image(soil, 0, 160);
   //life
-  for (int x=0; x<240; x+=80) {
+  for (int x=0; x<180; x+=70) {
     image(life, x+10, 10);
   }
   //animal
   image(groundhog, groundHeight*3.4, groundHeight);
 
   //robot random appeared and shoot
-  noStroke();
-  fill(255, 0, 0);
-  rect(robotX+20+raserX, robotY+32, 40, 10, 5);
-  raserX -= 2;
-  raserX %= groundHeight*2;
+  stroke(255, 0, 0);
+  strokeWeight(10);
+  if(raserXleft>=-185) line(robotX+25+raserXleft, robotY+37, robotX+25+raserXright, robotY+37);
+  raserXleft-=2;
+  if (raserXleft<-40) raserXright -= 2;
+  if(raserXleft<-185) {raserXleft = 0; raserXright = 0;}
   image(robot, robotX, robotY);
 
   //soldier move around
   image(soldier, soldierX, soldierY);
-
   soldierX += soldierSpeed;
   soldierX %= width;
   robotSpeed = 2;
 }
-//
